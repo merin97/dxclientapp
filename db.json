@@ -1,0 +1,39 @@
+{
+  "clients": [
+    {
+      "id": 4,
+      "Name": "bentley",
+      "domain": "Testing",
+      "manager_id": "7",
+      "RevenuePerYear": "24M"
+    },
+    {
+      "id": 8,
+      "Name": "yamaha",
+      "domain": "Manufacturing",
+      "manager_id": "9",
+      "RevenuePerYear": "18M"
+    },
+    {
+      "id": "2",
+      "Name": "bajaj chetak",
+      "domain": "manufacturing",
+      "manager_id": "42",
+      "RevenuePerYear": "77M"
+    },
+    {
+      "id": "7",
+      "Name": "rx100",
+      "domain": "Testing",
+      "manager_id": "5",
+      "RevenuePerYear": "44M"
+    },
+    {
+      "id": "5",
+      "Name": "creta",
+      "domain": "Testing",
+      "manager_id": "6",
+      "RevenuePerYear": "88M"
+    }
+  ]
+}
