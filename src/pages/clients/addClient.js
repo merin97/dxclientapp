@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function Addclient() {
-  const [state, setState] = useState([]);
+  const [state, setState] = useState({});
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value })
   };
@@ -24,7 +24,7 @@ export default function Addclient() {
         //console.log(data)
       );
   };
-  console.log(state)
+ 
   return (
     <div>
       <div className="container md-5 display">
@@ -105,7 +105,7 @@ export default function Addclient() {
             </div>
           </div>
           <div class="col-sm-6">
-            <button type="submit" className=" btn btn-primary" on>
+            <button type="submit" className=" btn btn-primary" >
               Submit
             </button>
           </div>

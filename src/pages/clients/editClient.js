@@ -117,7 +117,7 @@ export default function Editclient(props) {
             </div>
           </div>
           <div class="col-sm-6">
-            <button type="submit" className=" btn btn-primary" on>
+            <button type="submit" className=" btn btn-primary" >
               Submit
             </button>
           </div>

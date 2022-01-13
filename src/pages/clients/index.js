@@ -1,38 +1,69 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Data  from '../../db.json'
+import Pagination from "../../components/pagination";
+
 export default function Clients() {
-  const navigate = useNavigate(); //like usehistory
+  const itemCount = 100;
+  const pageSize = 10;
+
+  const navigate = useNavigate(); 
   const [clients, setClients] = useState([]); // stateClients is declared
+  const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
     fetch("http://localhost:8000/clients") //api is fetched
       .then((res) => res.json())
       .then((response) => {
         setClients(response);
-      }); // api response is assigned to blue coloured clients (state variable clients)
+      }); 
   }, []);
+
   const onDelete = (id) => {
     fetch("http://localhost:8000/clients/" + id, { method: "DELETE" }) //api is fetched
       .then((res) => res.json())
       .then((response) => {
         const filter = clients.filter((x) => x.id !== id);
         setClients(filter);
-        console.log("delete", filter).catch((error) => {
-          alert("error");
-        });
+      })
+      .catch((error) => {
+        alert("error");
       });
   };
-   const onEdit = (id) =>{
-     navigate(`/editClient/${id}`)
-   }
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const getData = () => {
+    const startIndex = currentPage * pageSize - pageSize;
+    const endIndex = startIndex + pageSize;
+    console.log(clients .filter((x) => x.Name.toLowerCase().includes(search.toLowerCase())))
+    return clients
+      .filter((x) => x.Name.toLowerCase().includes(search.toLowerCase()))
+      .slice(startIndex, endIndex);
+  };
+
+  const onEdit = (id) => {
+    navigate(`/editClient/${id}`);
+  };
   const addClick = () => {
     navigate("/addClient");
   };
 
   return (
-    <section>
-      <button onClick={addClick}>ADD client</button>
-
+    <section className="my-3 container">
+      <div className="d-flex justify-content-end mb-3">
+      <input
+        type="text"
+        placeholder="Search.."
+        name="search"
+        onChange={(e) => setSearch(e.target.value)}
+        autocomplete="off"
+      />
+      <button className=" mx-5 btn rounded-pill btn-primary" onClick={addClick}>ADD client</button>
+     
+      </div>
       <table className="table">
         <thead>
           <tr className="table-light">
@@ -46,7 +77,7 @@ export default function Clients() {
           </tr>
         </thead>
         <tbody>
-          {clients.map((client) => (
+          {getData().map((client) => (
             <tr className="table-primary">
               <th scope="row">{client.id}</th>
               <td>{client.Name}</td>
@@ -69,6 +100,12 @@ export default function Clients() {
           {/* state variable clients mapped to show rows */}
         </tbody>
       </table>
+      <Pagination
+        itemCount={itemCount}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </section>
   );
 }
