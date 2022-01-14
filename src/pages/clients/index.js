@@ -78,7 +78,7 @@ export default function Clients() {
         </thead>
         <tbody>
           {getData().map((client) => (
-            <tr className="table-primary">
+            <tr key ={client.id} className="table-primary">
               <th scope="row">{client.id}</th>
               <td>{client.Name}</td>
               <td>{client.domain}</td>
@@ -101,7 +101,7 @@ export default function Clients() {
         </tbody>
       </table>
       <Pagination
-        itemCount={itemCount}
+        itemCount={clients.length}
         pageSize={pageSize}
         currentPage={currentPage}
         onPageChange={handlePageChange}
