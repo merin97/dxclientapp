@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 export default function Editclient(props) {
   const { id } = useParams();  // to get id from url
-  const [state, setState] = useState([]);
+  const [state, setState] = useState({});
   
   useEffect(() => {
     fetch("http://localhost:8000/clients/"+id) //api is fetched

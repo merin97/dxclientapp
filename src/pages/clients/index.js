@@ -8,15 +8,14 @@ export default function Clients() {
   const navigate = useNavigate();
   const [clients, setClients] = useState([]); // stateClients is declared
   const [currentPage, setCurrentPage] = useState(1);
-  const [search, setSearch] = useState("");
-  const [itemCount, setItemCount] = useState(0);
+  const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:8000/clients") //api is fetched
       .then((res) => res.json())
       .then((response) => {
         setClients(response);
-        setItemCount(response.length);
+        setFiltered(response);
       });
   }, []);
 
@@ -36,15 +35,19 @@ export default function Clients() {
     setCurrentPage(page);
   };
 
-  const getData = () => {
+  const onSearch = (e) => {
+    setFiltered(
+      clients.filter((x) =>
+        x.Name.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+    );
+    setCurrentPage(1);
+  }
+
+  const getData = (data) => {
     const startIndex = currentPage * pageSize - pageSize;
     const endIndex = startIndex + pageSize;
-    console.log(
-      clients.filter((x) => x.Name.toLowerCase().includes(search.toLowerCase()))
-    );
-    return clients
-      .filter((x) => x.Name.toLowerCase().includes(search.toLowerCase()))
-      .slice(startIndex, endIndex);
+    return data.slice(startIndex, endIndex);
   };
 
   const onEdit = (id) => {
@@ -61,8 +64,8 @@ export default function Clients() {
           type="text"
           placeholder="Search.."
           name="search"
-          onChange={(e) => setSearch(e.target.value)}
-          autocomplete="off"
+          onChange={onSearch}
+          autoComplete="off"
         />
         <button
           className=" mx-5 btn rounded-pill btn-primary"
@@ -84,7 +87,7 @@ export default function Clients() {
           </tr>
         </thead>
         <tbody>
-          {getData().map(({ id, Name, domain, manager_id, RevenuePerYear }) => (
+          {getData(filtered).map(({ id, Name, domain, manager_id, RevenuePerYear }) => (
             <tr key={id} className="table-primary">
               <th scope="row">{id}</th>
               <td>{Name}</td>
@@ -108,7 +111,7 @@ export default function Clients() {
         </tbody>
       </table>
       <Pagination
-        itemCount={clients.length}
+        itemCount={filtered.length}
         pageSize={pageSize}
         currentPage={currentPage}
         onPageChange={handlePageChange}
