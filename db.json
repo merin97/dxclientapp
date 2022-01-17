@@ -706,13 +706,6 @@
       "domain": "Testing",
       "manager_id": "5",
       "RevenuePerYear": "44M"
-    },
-    {
-      "id": 101,
-      "Name": "bentley",
-      "domain": "Testing",
-      "manager_id": "7",
-      "RevenuePerYear": "24M"
     }
   ]
 }

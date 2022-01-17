@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function Addclient() {
   const [state, setState] = useState({});
   const handleChange = (e) => {
-    setState({ ...state, [e.target.name]: e.target.value })
+    setState({ ...state, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,17 +13,15 @@ export default function Addclient() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(state),
-    })
-      .then((response) => {
-       setState({})
-        alert('successfully submitted')
-      })
-      
-        // this is the data we get after putting our data,
-        //console.log(data)
-    
+    }).then((response) => {
+      setState({});
+      alert("successfully submitted");
+    });
+
+    // this is the data we get after putting our data,
+    //console.log(data)
   };
- 
+
   return (
     <div>
       <div className="container md-5 display">
@@ -104,7 +102,7 @@ export default function Addclient() {
             </div>
           </div>
           <div class="col-sm-6">
-            <button type="submit" className=" btn btn-primary" >
+            <button type="submit" className=" btn btn-primary">
               Submit
             </button>
           </div>
