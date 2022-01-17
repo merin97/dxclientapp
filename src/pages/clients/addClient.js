@@ -15,14 +15,13 @@ export default function Addclient() {
       body: JSON.stringify(state),
     })
       .then((response) => {
-        return response.json();
+       setState({})
+        alert('successfully submitted')
       })
-      .then(
-        (data) => setState({})
-
+      
         // this is the data we get after putting our data,
         //console.log(data)
-      );
+    
   };
  
   return (
@@ -34,7 +33,7 @@ export default function Addclient() {
             <label for="ID">ID</label>
             <div class="col-sm-6">
               <input
-                type="text"
+                type="number"
                 value={state.id}
                 class="form-control"
                 name="id"

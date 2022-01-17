@@ -25,6 +25,7 @@ export default function Clients() {
       .then((response) => {
         const filter = clients.filter((x) => x.id !== id);
         setClients(filter);
+        setFiltered(filter);
       })
       .catch((error) => {
         alert("error");
@@ -41,7 +42,7 @@ export default function Clients() {
         x.Name.toLowerCase().includes(e.target.value.toLowerCase())
       )
     );
-    setCurrentPage(1);
+    setCurrentPage(1); 
   }
 
   const getData = (data) => {

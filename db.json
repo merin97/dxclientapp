@@ -83,7 +83,8 @@
       "domain": "Testing",
       "manager_id": "6",
       "RevenuePerYear": "88M"
-    },{
+    },
+    {
       "id": 12,
       "Name": "bajaj chetak",
       "domain": "manufacturing",
@@ -103,7 +104,8 @@
       "domain": "Testing",
       "manager_id": "6",
       "RevenuePerYear": "88M"
-    },{
+    },
+    {
       "id": 15,
       "Name": "bajaj chetak",
       "domain": "manufacturing",
@@ -123,7 +125,8 @@
       "domain": "Testing",
       "manager_id": "6",
       "RevenuePerYear": "88M"
-    },{
+    },
+    {
       "id": 18,
       "Name": "bajaj chetak",
       "domain": "manufacturing",
@@ -164,7 +167,8 @@
       "domain": "Testing",
       "manager_id": "6",
       "RevenuePerYear": "88M"
-    },{
+    },
+    {
       "id": 24,
       "Name": "bajaj chetak",
       "domain": "manufacturing",
@@ -705,13 +709,6 @@
     },
     {
       "id": 101,
-      "Name": "bentley",
-      "domain": "Testing",
-      "manager_id": "7",
-      "RevenuePerYear": "24M"
-    },
-    {
-      "id": 102,
       "Name": "bentley",
       "domain": "Testing",
       "manager_id": "7",
